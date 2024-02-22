@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<title>Wildlife Animals</title>
+
+<body>
+
+<h1>Animal Game by Sahil Grewal</h2>
+
+<form>
+    <label for="secretAnimal">The hidden animal type:</label><br>
+    <input type="password" id="hidden_ani" value="Chicken"><br><br>
+    
+    <label for="guessAnimal">Guess the animal:</label><br>
+    <input type="text" id="check_ani" autofocus><br><br>
+    
+    <input type="button" onclick="checkAnimal()" value="Check the Guess">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+    var wrong = 0;
+    var correct = 0;
+    
+    function checkAnimal() {
+      var Hidden_animal = document.getElementById("hidden_ani").value;
+      var Guess_animal = document.getElementById("check_ani").value;
+      
+      if (Hidden_animal === Guess_animal) {
+        correct++;
+        alert("Ruff ruff");
+      } else {
+        wrong++;
+        alert("Grrrr");
+      }
+      
+      document.getElementById("result").innerHTML = `Correct guesses Count: ${correct}, Wrong guesses Count: ${wrong}`;
+}
+
+
+</script>
+
+</body>
+</html> 
