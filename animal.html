@@ -18,7 +18,15 @@
 
 
 <p id="result">This text will be replaced </p>
-
+<div id="myImageContainer" class="mt-3">
+  <img
+    src="Images/istockphoto-490361148-612x612.jpg"
+    alt="Whiskey"
+    onclick="selectImage()"
+    width="150"
+    height="150"
+  />
+</div>
 <script> 
 
     var wrong = 0;
@@ -38,6 +46,31 @@
       
       document.getElementById("result").innerHTML = `Correct guesses Count: ${correct}, Wrong guesses Count: ${wrong}`;
 }
+
+    var wrong = 0;
+    var useImage = 1;
+    var correct = 0;
+function selectImage() {
+        switch (useImage) {
+          case 1:
+            document.querySelector("#myImageContainer img").src =
+              "Images/download.jpg";
+            useImage = 2;
+            break;
+          case 2:
+            document.querySelector("#myImageContainer img").src =
+              "Images/360_F_112422423_xVqhye4Uy61k4G8XxL4z6YdJYXtXlV3Z.jpg";
+            useImage = 3;
+            break;
+          case 3:
+            document.querySelector("#myImageContainer img").src =
+              "Images/istockphoto-490361148-612x612.jpg";
+            useImage = 1;
+            break;
+          default:
+            break;
+        }
+      }
 
 
 </script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Discounts</title>
+  </head>
+  <body>
+    <h2>Sahil Grewal discount calculations</h2>
+    <label for="price">Enter price per:</label>
+    <input type="number" id="priceID" name="price" value="10" required /><br />
+
+    <label for="count">Enter the number of items:</label>
+    <input type="number" id="countID" name="count" value="9" required /><br />
+
+    <label for="reductions">Enter the discount percent:</label>
+    <input
+      type="number"
+      id="reductionsID"
+      name="reductions"
+      value="5"
+      required
+    /><br />
+
+    <button onclick="discount()">Show total</button>
+        <div id="result"></div>
+        <form>
+            <input type="radio" id="sum" name="operation" value="sum" onclick="chooseOp()">
+            <label for="sum">sum</label><br>
+            
+            <input type="radio" id="multiply" name="operation" value="multiply" onclick="chooseOp()">
+            <label for="multiply">mult</label><br>
+            
+            <input type="radio" id="exponent" name="operation" value="exponent" onclick="chooseOp()">
+            <label for="exponent">exp</label><br>
+        </form>
+    
+
+    <div id="taskResult"></div>
+
+    <script>
+      function discount() {
+        var priceValue = parseFloat(document.getElementById("priceID").value);
+        var countValue = parseInt(document.getElementById("countID").value);
+        var discountPercentValue = parseFloat(
+          document.getElementById("reductionsID").value
+        );
+
+        var myOutput = "";
+
+        for (let i = 0; i < 5; ++i) {
+          let calculatedCost =
+            priceValue * countValue * (1 - discountPercentValue / 100);
+          myOutput +=
+            discountPercentValue + "% is " + calculatedCost.toFixed(1) + "; ";
+          discountPercentValue++;
+        }
+
+        document.getElementById("result").innerHTML = "Totals are: " + myOutput;
+      }
+
+      function chooseOp() {
+        let priceValue = parseFloat(document.getElementById("priceID").value);
+        let discountValue = parseFloat(document.getElementById("reductionsID").value);
+
+        let taskResult = document.getElementById("taskResult");
+        let chosenOperation = document.querySelector(
+          'input[name="operation"]:checked'
+        ).value;
+
+        if (chosenOperation === "sum") {
+          taskResult.innerHTML =
+            "Sum of price and discount is: " + (priceValue + discountValue);
+        } else if (chosenOperation === "multiply") {
+          taskResult.innerHTML =
+            "Product of price and discount is: " + priceValue * discountValue;
+        } else if (chosenOperation === "exponent") {
+          taskResult.innerHTML =
+            "Price raised to the power of discount is: " +
+            Math.pow(priceValue, discountValue);
+        } else {
+          taskResult.innerHTML = "No operation selected";
+        }
+      }
+
+      function resolveForm() {
+        console.log("Getting form values");
+        age = document.getElementById("form1_age").value;
+        nick = document.getElementById("form1_nick").value;
+        confirmed = confirm("Are these the values? " + age + " and " + nick);
+
+        out = document.getElementById("result");
+        if (confirmed) {
+          out.innerHTML = "Values were confirmed";
+        } else {
+          out.innerHTML = "Values were not confirmed";
+        }
+      }
+    </script>
+  </body>
+</html>
